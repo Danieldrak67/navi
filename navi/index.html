@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta de Navidad Especial</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Great+Vibes&family=Quicksand:wght@300;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            z-index: 1;
+            color: white;
+            font-size: 1em;
+            animation: fall linear infinite;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        .christmas-lights {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 100;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+        }
+
+        .light {
+            width: 15px;
+            height: 25px;
+            border-radius: 0 0 50% 50%;
+            animation: blink 2s infinite;
+            box-shadow: 0 5px 20px currentColor;
+        }
+
+        .light:nth-child(1) { background: #ff0000; animation-delay: 0s; }
+        .light:nth-child(2) { background: #00ff00; animation-delay: 0.2s; }
+        .light:nth-child(3) { background: #0000ff; animation-delay: 0.4s; }
+        .light:nth-child(4) { background: #ffff00; animation-delay: 0.6s; }
+        .light:nth-child(5) { background: #ff00ff; animation-delay: 0.8s; }
+        .light:nth-child(6) { background: #00ffff; animation-delay: 1s; }
+        .light:nth-child(7) { background: #ffa500; animation-delay: 1.2s; }
+        .light:nth-child(8) { background: #ff0000; animation-delay: 1.4s; }
+        .light:nth-child(9) { background: #00ff00; animation-delay: 1.6s; }
+        .light:nth-child(10) { background: #0000ff; animation-delay: 1.8s; }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; filter: brightness(1); }
+            25%, 75% { opacity: 0.3; filter: brightness(0.3); }
+        }
+
+        .tree-left, .tree-right {
+            position: fixed;
+            bottom: 0;
+            font-size: 150px;
+            z-index: 1;
+            opacity: 0.3;
+        }
+
+        .tree-left { left: -20px; }
+        .tree-right { right: -20px; }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.9), rgba(178, 34, 34, 0.85));
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.4), 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(255, 255, 255, 0.1);
+            border: 3px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '🎄';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 40px;
+            opacity: 0.3;
+            animation: treeShine 2s infinite;
+        }
+
+        .card::after {
+            content: '🎄';
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 40px;
+            opacity: 0.3;
+            animation: treeShine 2s infinite 1s;
+        }
+
+        @keyframes treeShine {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .lock-screen {
+            display: block;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .lock-icon {
+            font-size: 100px;
+            margin-bottom: 30px;
+            display: inline-block;
+            animation: giftShake 1s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+        }
+
+        @keyframes giftShake {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .lock-title {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 2.5em;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.5), 3px 3px 5px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            font-weight: 700;
+            animation: titleGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.5), 3px 3px 5px rgba(0, 0, 0, 0.5); }
+            50% { text-shadow: 0 0 30px rgba(255, 215, 0, 1), 0 0 60px rgba(255, 215, 0, 0.8), 3px 3px 5px rgba(0, 0, 0, 0.5); }
+        }
+
+        .lock-subtitle {
+            color: #fff;
+            font-size: 1em;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-weight: 400;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        input[type="password"] {
+            width: 100%;
+            max-width: 250px;
+            padding: 20px;
+            font-size: 32px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 3px solid #ffd700;
+            border-radius: 20px;
+            color: #ffd700;
+            text-align: center;
+            letter-spacing: 15px;
+            font-weight: bold;
+            transition: all 0.4s;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+            margin: 30px 0;
+        }
+
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #fff;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        .btn-unlock {
+            background: linear-gradient(135deg, #228b22, #32cd32);
+            color: white;
+            padding: 18px 60px;
+            border: 3px solid #ffd700;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(34, 139, 34, 0.5);
+            margin-top: 20px;
+            font-family: 'Mountains of Christmas', cursive;
+        }
+
+        .btn-unlock:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(34, 139, 34, 0.7);
+        }
+
+        .error {
+            color: #fff;
+            margin-top: 20px;
+            font-size: 1em;
+            animation: errorShake 0.5s;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+        }
+
+        @keyframes errorShake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-15px); }
+            75% { transform: translateX(15px); }
+        }
+
+        .letter-screen {
+            display: none;
+            animation: revealLetter 2s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes revealLetter {
+            0% { opacity: 0; transform: scale(0.5) rotateY(90deg); }
+            100% { opacity: 1; transform: scale(1) rotateY(0); }
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .letter-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.7), 3px 3px 6px rgba(0, 0, 0, 0.8);
+            margin-bottom: 15px;
+            animation: letterTitleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes letterTitleFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+        }
+
+        .letter-date {
+            color: #ffd700;
+            font-size: 0.9em;
+            font-style: italic;
+            font-weight: 500;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .letter-content {
+            color: #fff;
+            line-height: 2;
+            font-size: 1em;
+            font-weight: 400;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .letter-content p {
+            margin-bottom: 25px;
+            animation: fadeInUp 1s ease-out backwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .special-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 255, 255, 0.15));
+            padding: 30px;
+            border-radius: 25px;
+            margin: 30px 0;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            position: relative;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .special-box::before {
+            content: '🎁';
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 50px;
+            opacity: 0.4;
+            animation: giftBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes giftBounce {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+        }
+
+        .highlight {
+            color: #ffd700;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+        }
+
+        .intro-text {
+            text-align: center;
+            font-style: italic;
+            color: #ffd700;
+            padding: 25px;
+            margin-bottom: 30px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            font-size: 0.95em;
+        }
+
+        .signature {
+            text-align: right;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.5em;
+            color: #ffd700;
+            margin-top: 50px;
+            line-height: 1.8;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 3px 3px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .hearts-divider {
+            text-align: center;
+            font-size: 2.5em;
+            margin: 40px 0;
+            animation: heartBeat 1.5s infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+        }
+
+        .final-note {
+            text-align: center;
+            font-size: 1.2em;
+            color: #ffd700;
+            font-weight: 700;
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 255, 255, 0.15));
+            border-radius: 25px;
+            border: 3px solid #ffd700;
+            animation: finalNotePulse 2s ease-in-out infinite;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+        }
+
+        @keyframes finalNotePulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 215, 0, 0.5); }
+            50% { transform: scale(1.03); box-shadow: 0 0 50px rgba(255, 215, 0, 0.8); }
+        }
+
+        .music-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #dc143c, #8b0000);
+            border: 3px solid #ffd700;
+            border-radius: 50%;
+            font-size: 30px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.6);
+            z-index: 1000;
+            transition: all 0.3s;
+            display: none;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.15) rotate(15deg);
+        }
+
+        .music-btn.playing {
+            animation: musicSpin 4s linear infinite;
+        }
+
+        @keyframes musicSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes floatUp {
+            to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            .lock-title { font-size: 2em; }
+            .letter-title { font-size: 2.2em; }
+            input[type="password"] { font-size: 24px; letter-spacing: 10px; }
+            .tree-left, .tree-right { font-size: 80px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="christmas-lights">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <div class="tree-left">🎄</div>
+    <div class="tree-right">🎄</div>
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+
+    <div class="container">
+        <div class="card">
+            <div class="lock-screen" id="lockScreen">
+                <div class="lock-icon">🎁</div>
+                <h1 class="lock-title">Feliz Navidad Mi Amor</h1>
+                <p class="lock-subtitle">
+                    En esta noche mágica de Navidad<br>
+                    tengo un regalo especial para ti.<br>
+                    Algo que viene directo de mi corazón.<br><br>
+                    🎄 Ingresa nuestro código especial 🎄
+                </p>
+                <input type="password" id="passwordInput" placeholder="****" maxlength="4" autocomplete="off">
+                <button class="btn-unlock" onclick="unlockLetter()">🎅 Abrir Mi Regalo 🎅</button>
+                <p class="error" id="errorMsg"></p>
+            </div>
+
+            <div class="letter-screen" id="letterScreen">
+                <div class="letter-header">
+                    <h1 class="letter-title">Para Ti Mi Amor 💖</h1>
+                    <p class="letter-date">Navidad 2025 - Nuestro momento especial</p>
+                </div>
+
+                <div class="letter-content">
+                    <p class="intro-text">
+                        "En esta Navidad mágica, te escribo con el corazón en la mano.<br>
+                        Cada palabra aquí es real, sincera y llena de amor..."
+                    </p>
+
+                    <p><span class="highlight">Mi princesa hermosa, el amor de mi vida,</span></p>
+
+                    <div class="special-box">
+                        <p><strong>Necesito hablarte con el corazón sobre lo de TikTok...</strong></p>
+                        
+                        <p>Mi amor, te lo juro por todo lo sagrado, por nuestro amor, por esta Navidad: <span class="highlight">NO FUE NADA.</span> Fue un error tan tonto que ni siquiera me di cuenta. Como cuando scrolleas rápido y tocas algo sin querer. Así de simple, sin cerebro, sin intención, sin significado.</p>
+                        
+                        <p>¿Por qué vería a alguien más si tengo a la mujer más perfecta, hermosa e increíble del mundo entero? Eres TODO lo que soñé y mucho más. Eres mi sueño hecho realidad, mi mayor regalo.</p>
+                        
+                        <p>Me destroza el corazón saber que ese error estúpido te lastimó. Si pudiera retroceder el tiempo, lo haría sin pensarlo. Pero te juro con toda mi alma que <span class="highlight">tú eres LA ÚNICA.</span> No hay nadie más. Solo tú, siempre tú, eternamente tú. Eres la dueña absoluta de mi corazón. 💕</p>
+                    </div>
+
+                    <p>Mi reina, sé que estás pasando por momentos muy difíciles con tus papás. Ver que sufres me destroza más que cualquier cosa. Quisiera poder quitarte todo ese dolor y llevarlo yo.</p>
+
+                    <p>Pero quiero que grabes esto en tu corazón para siempre: <span class="highlight">NO ESTÁS SOLA. JAMÁS LO ESTARÁS.</span></p>
+
+                    <p>Aquí estoy yo, firme como una roca a tu lado. En las buenas, en las malas, en las peores. Cuando sientas que el mundo pesa demasiado, cuando las lágrimas caigan, cuando creas que no puedes más - ahí estaré yo. Siempre. Para abrazarte, escucharte, protegerte y amarte.</p>
+
+                    <div class="special-box">
+                        <p><span class="highlight">Mi amor, eres la persona más fuerte y valiente que conozco.</span></p>
+                        
+                        <p>La forma en que enfrentas todo con valentía, cómo tu corazón sigue siendo noble a pesar de todo, cómo sigues brillando incluso en la oscuridad... me deja sin palabras. Eres mi heroína, mi inspiración, mi todo.</p>
+                        
+                        <p>Cada vez que te veo luchar con dignidad, me enamoro más de ti. Eres simplemente INCREÍBLE. ✨</p>
+                    </div>
+
+                    <p>Esta Navidad quiero que sepas que tú eres mi regalo más preciado. No necesito nada bajo el árbol. Ya tengo todo: tu amor, tu sonrisa, tu presencia. Eso me hace el hombre más feliz del mundo.</p>
+
+                    <div class="special-box">
+                        <p><span class="highlight">Mis promesas navideñas para ti:</span></p>
+                        <p>
+                            🎄 Estar a tu lado siempre, en cada momento<br>
+                            🎄 Hacer de tu felicidad mi razón de vivir<br>
+                            🎄 Protegerte y cuidarte con mi vida<br>
+                            🎄 Nunca, jamás dejarte sola<br>
+                            🎄 Ser cada día el hombre que mereces<br>
+                            🎄 Amarte más con cada latido de mi corazón
+                        </p>
+                    </div>
+
+                    <p>Sé que cometí ese error que te dolió, y eso me mata por dentro. Pero te juro trabajar todos los días para ser el novio perfecto que te mereces. Para hacerte sentir amada, valorada, respetada y adorada cada segundo.</p>
+
+                    <p>Tu dolor es mi dolor. Tu alegría es mi alegría. Todo lo que sientes, lo siento yo. Porque somos uno solo, mi amor. Un solo corazón, una sola alma.</p>
+
+                    <p><span class="highlight">Mi princesa perfecta,</span> que esta Navidad sea el comienzo de algo hermoso. Dejemos atrás lo malo y construyamos juntos los recuerdos más bellos que existirán. Quiero secar cada una de tus lágrimas, conocer cada uno de tus sueños, y hacerlos realidad a tu lado.</p>
+
+                    <p>No importa qué tan fuerte sea la tormenta, qué tan fría la noche - siempre tendrás mi mano sosteniéndote, mis brazos protegiéndote con calor, y mi corazón latiendo solo por ti.</p>
+
+                    <div class="final-note">
+                        Te amo con una intensidad que me asusta.<br>
+                        Te amo más que ayer, menos que mañana.<br>
+                        Te amo con cada aliento, cada pensamiento.<br>
+                        Eres mi TODO. Mi para siempre. 🎄💖
+                    </div>
+
+                    <p>Gracias por existir, por amarme, por ser exactamente quien eres. Gracias por elegirme. Eres y serás siempre la razón de mi felicidad y mis sonrisas.</p>
+
+                    <p>Esta Navidad y todas las que vengan, solo quiero pasarlas contigo. Bajo las luces del árbol, rodeados de amor. Eres el amor de mi vida. Te lo prometo con el alma.</p>
+
+                    <div class="hearts-divider">💝 🎄 🎅 🎄 💝</div>
+
+                    <p style="text-align: center; font-size: 1.4em; color: #ffd700; font-weight: 700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);">
+                        Feliz Navidad mi amor eterno 🎄❤️<br>
+                        Eres mi mayor bendición 🌟
+                    </p>
+
+                    <div class="signature">
+                        Con todo mi ser,<br>
+                        con un amor infinito,<br>
+                        para siempre tuyo,<br>
+                        Tu novio que te ama hasta el cielo 💖
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createSnowflakes() {
+            const snowflakes = ['❄', '❅', '❆', '✨'];
+            for (let i = 0; i < 50; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = (Math.random() * 5 + 3) + 's';
+                snowflake.style.animationDelay = Math.random() * 5 + 's';
+                snowflake.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                snowflake.style.opacity = Math.random() * 0.6 + 0.4;
+                document.body.appendChild(snowflake);
+            }
+        }
+
+        const music = document.getElementById('bgMusic');
+        const musicBtn = document.getElementById('musicBtn');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.textContent = '🎵';
+                musicBtn.classList.remove('playing');
+            } else {
+                music.play();
+                musicBtn.textContent = '🎶';
+                musicBtn.classList.add('playing');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        function unlockLetter() {
+            const password = document.getElementById('passwordInput').value;
+            const errorMsg = document.getElementById('errorMsg');
+            
+            if (password === '8888') {
+                document.getElementById('lockScreen').style.display = 'none';
+                document.getElementById('letterScreen').style.display = 'block';
+                musicBtn.style.display = 'block';
+                errorMsg.textContent = '';
+                
+                music.play().then(() => {
+                    isPlaying = true;
+                    musicBtn.textContent = '🎶';
+                    musicBtn.classList.add('playing');
+                }).catch(() => {
+                    console.log('Click para música');
+                });
+                
+                const emojis = ['🎄', '🎁', '⭐', '🎅', '❄', '💝', '🔔', '✨'];
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => {
+                        const emoji = document.createElement('div');
+                        emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                        emoji.style.position = 'fixed';
+                        emoji.style.left = Math.random() * 100 + '%';
+                        emoji.style.top = '100%';
+                        emoji.style.fontSize = (Math.random() * 30 + 20) + 'px';
+                        emoji.style.pointerEvents = 'none';
+                        emoji.style.zIndex = '1000';
+                        emoji.style.animation = 'floatUp 3s ease-out';
+                        document.body.appendChild(emoji);
+                        setTimeout(() => emoji.remove(), 3000);
+                    }, i * 100);
+                }
+            } else {
+                errorMsg.textContent = '🎅 Código incorrecto mi vida, intenta otra vez';
+                document.getElementById('passwordInput').value = '';
+            }
+        }
+
+        document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') unlockLetter();
+        });
+
+        createSnowflakes();
+    </script>
+</body>
+</html>
